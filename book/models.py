@@ -8,7 +8,7 @@ class Author(Base):
     __tablename__ = 'authors'
     
     id = Column(Integer, primary_key=True)
-    name = Column(String(120))
+    name = Column(String(150))
     year = Column(Integer)
     created_at = Column(DateTime, default=func.now())
     
@@ -19,7 +19,7 @@ class Category(Base):
     __tablename__ = 'categories'
     
     id = Column(Integer, primary_key=True)
-    title = Column(String(120))
+    title = Column(String(150))
     created_at = Column(DateTime, default=func.now())
 
     

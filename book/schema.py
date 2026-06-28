@@ -10,8 +10,8 @@ class CreateAuthorSchema(BaseModel):
     class Config:
         from_attribute=True
         extra_kwargs = {
-            'name': 'Falonchi',
-            'year': 1900
+            'name': 'Nimadir',
+            'year': 2005
         }
         
 class AuthorAut(CreateAuthorSchema):
@@ -38,10 +38,10 @@ class UpdateCategorySchema(BaseModel):
     
 
 class CreateBookSchema(BaseModel):
-    title : str = Field(max_length=100)
+    title : str = Field(max_length=200)
     year : Optional[int] = None
     desc : Optional[str] = None
-    price : Decimal = Field(max_digits=1200, decimal_places=2)
+    price : Decimal = Field(max_digits=15, decimal_places=2)
     author_id : int
     category_id : int
     is_published : Optional[bool] = None
@@ -61,7 +61,7 @@ class UpdateBookSchema(CreateBookSchema):
     
 
 class CreateCommentSchema(BaseModel):
-    summary : str = Field(max_length=100)
+    summary : str = Field(max_length=200)
     user : str
     book_id : int
     
@@ -70,7 +70,7 @@ class CreateCommentSchema(BaseModel):
     
     
 class UpdateCommentSchema(BaseModel):
-    summary : Optional[str]  = Field(default=None, max_length=100)
+    summary : Optional[str]  = Field(default=None, max_length=200)
 
     class Config:
         from_attribute=True

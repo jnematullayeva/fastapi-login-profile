@@ -19,7 +19,7 @@ def check_pass(password, conf_password=None):
     if not password or not conf_password:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail={'msg': 'Parol va tasdiqlash maydoni to\'ldirilishi shart'}
+            detail={'msg': "Parol va tasdiqlash maydoni toldirilishi shart"}
         )
     
     regex = re.fullmatch(

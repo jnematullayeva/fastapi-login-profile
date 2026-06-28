@@ -1,20 +1,18 @@
 from book.models import *
 from book.schema import *
-from sqlalchemy.orm import Session, joinedload
+from fastapi import status, HTTPException
 from db import SessionLocal
 from fastapi.exceptions import HTTPException
-from fastapi import status
+from sqlalchemy.orm import Session, joinedload
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
-from fastapi import HTTPException, status
-from sqlalchemy.orm import Session, joinedload
 
 def get_object(session, id, model):
     obj = session.query(model).filter(model.id == id).first()
     if not obj:
         raise HTTPException(
             detail={
-                'message': f"{model} not found",
+                'message': f"{model}  foydalanuvchi topilmadi",
             },
             status_code=status.HTTP_404_NOT_FOUND
         )
@@ -33,7 +31,11 @@ def response_model(msg, status, data, etc = None):
     }
     
 
-#AUTHOR
+
+
+
+
+
 
 def create_author(session: Session, data: CreateAuthorSchema):
     author = Author(name=data.name, year=data.year)
@@ -75,7 +77,9 @@ def author_delete(session: Session, author_id: int):
 
 
 
-#CATEGORY
+
+
+
 def create_category(session: Session, data: CreateCategorySchema):
     category = Category(title=data.title)
     session.add(category)
@@ -114,7 +118,11 @@ def category_list(session: Session):
     return response_model('category', status.HTTP_200_OK, categories)
 
 
-#BOOK
+
+
+
+
+
 
 def create_book(session: Session, data: CreateBookSchema):
     book = Book(**data.model_dump())
@@ -192,7 +200,13 @@ def book_list(session: Session):
     return response_model('book', status.HTTP_200_OK, books)
 
 
-#COMMENT
+
+
+
+
+
+
+
 def create_comment(session: Session, data: CreateCommentSchema):
     comment = Comment(summary=data.summary, book_id=data.book_id, user=data.user)
     session.add(comment)
@@ -236,7 +250,12 @@ def delete_comment(session:Session, comment_id:int):
     return response_model('Comment deleted', status.HTTP_204_NO_CONTENT, data=None)
 
 
-#SAVED
+
+
+
+
+
+
 def create_saved(session: Session, data: CreateSavedSchema):
     saved = session.query(Saved).filter(Saved.book_id == data.book_id, Saved.user_id == data.user_id ).first()
     if not saved:

@@ -15,13 +15,13 @@ class SignUpSchema(BaseModel):
         "from_attributes": True,
         "json_schema_extra": {
             "example": {
-                "first_name": "Ali",
-                "last_name": "Valiyev",
-                "username": "ali123",
-                "email": "ali@example.com",
+                "first_name": "Jasmin",
+                "last_name": "Nimadir",
+                "username": "axorip",
+                "email": "Jasminanematullayeva1210005@gmail.com",
                 "phone_number": "+998901234567",
-                "password": "StrongPass123!",
-                "conf_password": "StrongPass123!"
+                "password": "1210!",
+                "conf_password": "1210!"
             }
         }
     }

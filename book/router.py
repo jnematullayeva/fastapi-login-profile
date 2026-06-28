@@ -29,7 +29,13 @@ def delete_author_router(author_id:int, session: Session = Depends(get_db)):
     return crud.author_delete(session, author_id)
 
 
-#CATEGORY
+
+
+
+
+
+
+
 @router.post('/create-category')
 def create_category_router(data:schema.CreateCategorySchema , session: Session = Depends(get_db)):
     return crud.create_category(session, data)
@@ -50,7 +56,14 @@ def update_category_router(category_id:int, data: schema.UpdateCategorySchema ,s
 def delete_category_router(category_id:int, session: Session = Depends(get_db)):
     return crud.category_delete(session, category_id)
 
-#BOOK
+
+
+
+
+
+
+
+
 @router.post('/create-book')
 def create_book_router(data:schema.CreateBookSchema , session: Session = Depends(get_db)):
     return crud.create_book(session, data)
@@ -71,7 +84,13 @@ def update_book_router(book_id:int, data: schema.UpdateBookSchema ,session: Sess
 def delete_book_router(book_id:int, session: Session = Depends(get_db)):
     return crud.book_delete(session, book_id)
 
-#COMMENT
+
+
+
+
+
+
+
 @router.post('/create/comment')
 def create_comment_router(data: schema.CreateCommentSchema, session:Session = Depends(get_db)):
     return crud.create_comment(session, data)
@@ -89,7 +108,14 @@ def comment_list_router( book_id :int, session:Session = Depends(get_db)):
 def delete_comment_router(comment_id : int, session:Session = Depends(get_db)):
     return crud.delete_comment(session, comment_id)
 
-#SAVED
+
+
+
+
+
+
+
+
 @router.post('/save-book/')
 def create_saved_router(data:schema.CreateSavedSchema, session: Session = Depends(get_db)):
     return crud.create_saved(session=session, data=data)
